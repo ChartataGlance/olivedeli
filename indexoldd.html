@@ -3,82 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Olive Kitchen & Deli Menu | Breakfast, Brunch & Café in Epping</title>
-  <meta name="description" content="View the Olive Kitchen & Deli menu in Epping. Fresh breakfast, brunch, sandwiches, wraps, paninis, salads, burgers, pasta, fish dishes, coffee, smoothies and soft drinks." />
-  <meta name="keywords" content="Olive Kitchen and Deli, Olive Deli Epping, cafe menu Epping, breakfast Epping, brunch Epping, coffee Epping, sandwiches Epping, 67 High Street Epping" />
-  <meta name="author" content="Olive Kitchen & Deli" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://olivedeli.com/menu" />
-
-  <meta property="og:title" content="Olive Kitchen & Deli Menu | Epping Café" />
-  <meta property="og:description" content="Explore the Olive Kitchen & Deli menu: breakfast, brunch, sandwiches, burgers, pasta, fish dishes, coffee, smoothies and soft drinks." />
-  <meta property="og:type" content="restaurant.menu" />
-  <meta property="og:url" content="https://olivedeli.com/menu" />
-  <meta property="og:site_name" content="Olive Kitchen & Deli" />
-  <meta property="og:image" content="https://olivedeli.com/og-menu.jpg" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Olive Kitchen & Deli Menu | Epping Café" />
-  <meta name="twitter:description" content="Fresh breakfast, brunch, sandwiches, burgers, coffee, smoothies and more at Olive Kitchen & Deli in Epping." />
-  <meta name="twitter:image" content="https://olivedeli.com/og-menu.jpg" />
-
-  <meta name="theme-color" content="#344a32" />
-  <meta name="application-name" content="Olive Kitchen & Deli" />
-  <meta name="apple-mobile-web-app-title" content="Olive Kitchen & Deli" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="manifest" href="/manifest.json" />
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CafeOrCoffeeShop",
-    "name": "Olive Kitchen & Deli",
-    "url": "https://olivedeli.com/",
-    "telephone": "01992 578592",
-    "email": "hello@olivedeli.com",
-    "servesCuisine": ["Cafe", "Breakfast", "Brunch", "Mediterranean", "British", "Deli"],
-    "priceRange": "££",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "67 High Street",
-      "addressLocality": "Epping",
-      "addressCountry": "GB"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "07:30",
-        "closes": "15:30"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "09:00",
-        "closes": "15:00"
-      }
-    ],
-    "hasMenu": "https://olivedeli.com/menu"
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Menu",
-    "name": "Olive Kitchen & Deli Menu",
-    "description": "Breakfast, brunch, sandwiches, wraps, paninis, salads, burgers, pasta, fish dishes, coffee, smoothies and soft drinks menu at Olive Kitchen & Deli in Epping.",
-    "url": "https://olivedeli.com/menu",
-    "provider": {
-      "@type": "CafeOrCoffeeShop",
-      "name": "Olive Kitchen & Deli",
-      "url": "https://olivedeli.com/"
-    }
-  }
-  </script>
-
+  <title>Olive Deli Café Menu</title>
   <style>
     :root {
       --bg: #f4eadc;
@@ -109,18 +34,6 @@
     }
 
     .page { width: min(100%, 1040px); margin: 0 auto; padding: 16px; }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
 
     .hero {
       min-height: 330px;
@@ -443,20 +356,19 @@
   </style>
 </head>
 <body>
-  <main class="page" itemscope itemtype="https://schema.org/Menu">
-    <section class="hero" aria-labelledby="main-title">
+  <main class="page">
+    <section class="hero">
       <div>
         <span class="location">Epping Café Menu</span>
-        <h1 id="main-title" itemprop="name">Olive Kitchen<br>& Deli</h1>
-        <p class="subtitle" itemprop="description">Scan, browse and order from the Olive Kitchen & Deli menu in Epping. Fresh breakfast, brunch, sandwiches, wraps, paninis, salads, burgers, lunch plates, pasta, fish dishes, coffee, smoothies and soft drinks.</p>
+        <h1>Olive Kitchen<br>& Deli</h1>
+        <p class="subtitle">Scan, browse and order. Fresh breakfast, brunch, sandwiches, wraps, paninis, salads, burgers, lunch plates, pasta and fish dishes.</p>
       </div>
     </section>
 
-    <nav class="tabs" id="tabs" aria-label="Olive Kitchen & Deli menu categories"></nav>
+    <nav class="tabs" id="tabs" aria-label="Menu sections"></nav>
 
     <div class="floating-search">
-      <label for="menuSearch" class="sr-only">Search the Olive Kitchen & Deli menu by ingredient, dish or price</label>
-      <input id="menuSearch" type="search" placeholder="Search ingredient, dish or price..." aria-label="Search menu" />
+      <input id="menuSearch" type="search" placeholder="Search ingredient, dish or price..." />
     </div>
 
     <div class="empty-state" id="emptyState">No menu items found. Try another ingredient or dish name.</div>
@@ -654,15 +566,15 @@
       const note = item.note ? `<h5>${item.note}</h5>` : '';
       const desc = item.desc ? `<h3>${item.desc}</h3>` : '';
       const adds = item.add ? item.add.map(a => `<div class="mi-add"><h3>${a[0]}</h3><h3>${a[1]}</h3></div>`).join('') : '';
-      return `<article class="mi" itemprop="hasMenuItem" itemscope itemtype="https://schema.org/MenuItem"><div class="mi-header"><h2 itemprop="name">${item.name} ${badge}</h2><h2 class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><span itemprop="priceCurrency" content="GBP">£</span><span itemprop="price" content="${item.price.replace('£','')}">${item.price.replace('£','')}</span></h2></div><div class="mi-ing" itemprop="description">${note}${desc}</div>${adds}</article>`;
+      return `<div class="mi"><div class="mi-header"><h2>${item.name} ${badge}</h2><h2 class="price">${item.price}</h2></div><div class="mi-ing">${note}${desc}</div>${adds}</div>`;
     }
 
     function renderMenu() {
       tabs.innerHTML = menuData.map(section => `<a href="#${section.id}">${section.icon} ${section.title.replace('All Day ', '').replace(' / Brunch', '')}</a>`).join('');
       grid.innerHTML = menuData.map(section => `
-        <section class="allmenu ${section.wide ? 'wide' : ''}" id="${section.id}" itemprop="hasMenuSection" itemscope itemtype="https://schema.org/MenuSection">
+        <section class="allmenu ${section.wide ? 'wide' : ''}" id="${section.id}">
           <div class="headline">
-            <h1 itemprop="name">${section.icon} ${section.title}</h1>
+            <h1>${section.icon} ${section.title}</h1>
             ${section.subtitle ? `<h3>${section.subtitle}</h3>` : ''}
           </div>
           ${section.items.map(itemMarkup).join('')}
