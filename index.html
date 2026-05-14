@@ -233,6 +233,52 @@
 
     .floating-search input:focus { border-color: var(--green); }
 
+    .search-results {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(52,74,50,.14);
+      box-shadow: 0 14px 30px rgba(42,33,24,.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-family: Arial, sans-serif;
+    }
+
+    .result-count {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .result-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+    }
+
+    .result-chips::-webkit-scrollbar { display: none; }
+
+    .result-chip {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 11px;
+      background: rgba(52,74,50,.1);
+      color: var(--green);
+      font: 700 12px Arial, sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .result-chip:hover {
+      background: rgba(52,74,50,.18);
+    }
+
     @keyframes floatCard {
       0%,100% { transform: translateY(0); }
       50% { transform: translateY(-4px); }
@@ -456,7 +502,8 @@
 
     <div class="floating-search">
       <label for="menuSearch" class="sr-only">Search the Olive Kitchen & Deli menu by ingredient, dish or price</label>
-      <input id="menuSearch" type="search" placeholder="Search ingredient, dish or price..." aria-label="Search menu" />
+      <input id="menuSearch" type="search" placeholder="Search ingredient, dish or price..." aria-label="Search menu" autocomplete="off" />
+      <div class="search-results" id="searchResults" aria-live="polite"></div>
     </div>
 
     <div class="empty-state" id="emptyState">No menu items found. Try another ingredient or dish name.</div>
@@ -673,6 +720,7 @@
     renderMenu();
 
     const searchInput = document.getElementById('menuSearch');
+    const searchResults = document.getElementById('searchResults');
 
     searchInput.addEventListener('input', function () {
       const keyword = this.value.toLowerCase().trim();
@@ -693,6 +741,44 @@
       });
 
       emptyState.style.display = totalVisible ? 'none' : 'block';
+
+      const matches = [];
+      if (keyword) {
+        menuData.forEach(section => {
+          section.items.forEach(item => {
+            const combinedText = `${item.name} ${item.price} ${item.note || ''} ${item.desc || ''} ${item.add ? item.add.flat().join(' ') : ''}`.toLowerCase();
+            if (combinedText.includes(keyword)) {
+              matches.push({ name: item.name, sectionId: section.id, price: item.price });
+            }
+          });
+        });
+      }
+
+      if (!keyword) {
+        searchResults.style.display = 'none';
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      searchResults.style.display = 'block';
+      searchResults.innerHTML = `
+        <div class="result-count">${matches.length} result${matches.length === 1 ? '' : 's'} found</div>
+        <div class="result-chips">
+          ${matches.slice(0, 8).map(match => `
+            <button class="result-chip" type="button" data-section="${match.sectionId}" data-name="${match.name}">
+              ${match.name} · ${match.price}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    });
+
+    searchResults.addEventListener('click', function (event) {
+      const chip = event.target.closest('.result-chip');
+      if (!chip) return;
+
+      const section = document.getElementById(chip.dataset.section);
+      if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   </script>
 </body>
